@@ -520,7 +520,7 @@
 
 
 	//Search Popup
-	if($('#search-popup').length){
+	/*if($('#search-popup').length){
 		
 		//Show Popup
 		$('.search-toggler').on('click', function() {
@@ -535,6 +535,31 @@
 		$('.close-search,.search-popup .overlay-layer').on('click', function() {
 			$('#search-popup').removeClass('popup-visible');
 		});
+	}*/
+
+	if ($('#search-popup').length) {
+
+	    // Show Popup
+	    $('.search-toggler').on('click', function () {
+	        $('#search-popup').addClass('popup-visible');
+
+	        // Focus on the input after popup is visible
+	        setTimeout(function () {
+	            $('#searchinput').focus();
+	        }, 100);
+	    });
+
+	    // Close on ESC key
+	    $(document).keydown(function (e) {
+	        if (e.keyCode === 27) {
+	            $('#search-popup').removeClass('popup-visible');
+	        }
+	    });
+
+	    // Hide Popup on close button or overlay click
+	    $('.close-search, .search-popup .overlay-layer').on('click', function () {
+	        $('#search-popup').removeClass('popup-visible');
+	    });
 	}
 
 
@@ -667,5 +692,6 @@
 	});
 
 	
+
 
 })(window.jQuery);
